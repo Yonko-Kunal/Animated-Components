@@ -36,7 +36,7 @@ export default function RootLayout({
 			<ReactLenis root>
 				<body
 					suppressContentEditableWarning
-					className="min-h-full flex flex-col bg-black text-white"
+					className="min-h-full flex flex-col bg-background text-foreground"
 				>
 					<ThemeProvider
 						attribute="class"
