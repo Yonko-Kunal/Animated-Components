@@ -7,9 +7,10 @@ import Text from "@/components/Text";
 
 export default function Home() {
 	return (
-		<div>
+		<div className="flex items-center justify-center h-screen">
 			{/* <Headertext /> */}
-			<Text />
+			{/* <Text /> */}
+			<h1 className="text-5xl font-semibold">Centered text</h1>
 		</div>
 	);
 }

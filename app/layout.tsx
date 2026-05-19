@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Barlow_Condensed } from "next/font/google";
+import { Inter, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { ReactLenis } from "@/lib/lenis";
+import Navbar from "@/components/layout/Navbar";
+import { ThemeProvider } from "@/components/themeProvider";
 
 const barlowCondensed = Barlow_Condensed({
 	subsets: ["latin"],
@@ -9,14 +11,10 @@ const barlowCondensed = Barlow_Condensed({
 	variable: "--font-barlow-condensed",
 });
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const inter = Inter({
 	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
+	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -33,14 +31,22 @@ export default function RootLayout({
 		<html
 			suppressHydrationWarning
 			lang="en"
-			className={`${geistSans.variable} ${geistMono.variable} ${barlowCondensed.className} h-full antialiased`}
+			className={`${inter.className} ${barlowCondensed.variable} h-full antialiased`}
 		>
 			<ReactLenis root>
 				<body
 					suppressContentEditableWarning
 					className="min-h-full flex flex-col bg-black text-white"
 				>
-					{children}
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<Navbar />
+						{children}
+					</ThemeProvider>
 				</body>
 			</ReactLenis>
 		</html>
